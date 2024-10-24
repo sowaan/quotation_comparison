@@ -73,6 +73,7 @@ def get_quotation_against_rfq(rfq):
 		WHERE
 			sqi.request_for_quotation = %(request_for_quotation)s
 			AND sqi.parent = sq.name
+			AND sq.docstatus = 1
 	'''
 	quotations = frappe.db.sql(query.format(), { 'request_for_quotation':rfq }, as_dict = True)
 	for quotation in quotations:
